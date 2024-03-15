@@ -1,0 +1,41 @@
+<div class="card my-4">
+    <div class="card-body">
+      <div class="form-group">
+        <span class="square"
+        [ngClass]="{
+            'bg-success' :getPass.checkInDate,
+            'bg-danger' : !getPass.checkedIn
+        }"
+        ></span>
+            <input type="text" class="form-control" [value]="getPass.fullname" #fullname [disabled]="!isInEditMode">
+      
+       </div>
+       <p>
+        Checked In Date : {{(getPass.checkInDate | date) || 'Not Checked In Yet.'}}
+       </p>
+       <p>
+        Children:{{getPass.children?.length || 0}}
+       </p>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary" (click) ="isInEditMode = true" *ngIf="!isInEditMode">Edit</button>
+        <button class="btn btn-primary" 
+        (click) ="isInEditMode = false ; onUpdate(fullname.value)"
+        *ngIf="isInEditMode">Done</button>
+        <button class="btn btn-danger ml-4"
+        (click)="onPassDelete(getPass.id)"
+        >Delete</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

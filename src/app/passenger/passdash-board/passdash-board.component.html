@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <app-pass-count  
+            [getCount]="passArray.length"
+            [getCheckedIn] ="checkedIn"
+            
+            ></app-pass-count>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let pass of passArray">
+          {{pass.fullname}}
+    </li>
+</ul>
+<app-pass-card [getPass]="pass" *ngFor="let pass of passArray"
+(emitPassId)="onpass()"></app-pass-card>
+     </div>
+    </div>
+</div>
